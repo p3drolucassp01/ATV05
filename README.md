@@ -1,8 +1,8 @@
 # Documentação da aula 07- 
 
 ## Informações Gerais
-- **Data de Execução**: 22/11/2024
-- **Aluno**: Lucas andre 
+- **Data de Execução**: 21/11/2024
+- **Aluno**: Pedro Lucas
 # Configuração do Projeto com Reactstrap
 
 ## Passos Realizados
@@ -95,7 +95,7 @@ abre o arquivo README e atualizei com um resumo dos passos que foram feitos na a
 insire uma imagem mostrando o navbar com o seu nome como a imagem a seguir:
 
 
-![imagem](img_navbar01.png)
+![imagem](img_navbar.png)
 
 
 

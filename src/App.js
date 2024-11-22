@@ -8,7 +8,7 @@ function App() {
  <Navbar dark color="primary">
  <div className="container">
  <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
- <div>Aluno: Lucas Andre</div>
+ <div>Aluno: Pedro Lucas</div>
  </div>
  </Navbar>
 
