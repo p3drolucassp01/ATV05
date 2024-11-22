@@ -23,7 +23,7 @@ Em seguida, configurei o Bootstrap, adicionando a seguinte linha no arquivo src/
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ### 3. Criação da Barra de Navegação
-Para adicionar a barra de navegação, segui os seguintes passos:
+Para adicionar a barra de navegação, segui os seguintes passos: lll l
 
 Abri o arquivo src/App.js.
 Apaguei o conteúdo entre as tags <header> e </header>.
