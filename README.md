@@ -85,10 +85,10 @@ href="/": A propriedade href="/" define que o nome da marca, "Ristorante Con Fus
 
 "Ristorante Con Fusion": Este é o texto que aparece na navbar e é o nome ou marca do site ou aplicativo. Nesse caso, é um nome fictício de um restaurante, possivelmente usado como exemplo de um projeto.
 
-4. <div>Aluno: Pedro Lucas</div>:
+4. <div>Aluno: Lucas andre</div>:
 Este é um simples <div> contendo o texto "Aluno: Pedro Lucas". Esse texto pode ser usado para mostrar quem é o responsável pelo projeto ou quem está desenvolvendo o código.
 
-Função do texto: "Aluno: Pedro Lucas" pode ser útil em contextos como tarefas acadêmicas ou projetos de demonstração, onde é importante identificar quem criou o código. Pode ser exibido ao lado ou abaixo do nome da marca na navbar, dependendo do layout.
+Função do texto: "Aluno: Lucas andre" pode ser útil em contextos como tarefas acadêmicas ou projetos de demonstração, onde é importante identificar quem criou o código. Pode ser exibido ao lado ou abaixo do nome da marca na navbar, dependendo do layout.
 
 abre o arquivo README e atualizei com um resumo dos passos que foram feitos na atividade de hoje.
 
