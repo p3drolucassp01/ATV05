@@ -1,101 +1,63 @@
-# Documentação da aula 07- 
+# Documentação da aula 09- 
 
 ## Informações Gerais
-- **Data de Execução**: 21/11/2024
+- **Data de Execução**: 25/11/2024
 - **Aluno**: Pedro Lucas
 # Configuração do Projeto com Reactstrap
 
 ## Passos Realizados
 
-### 1. Configuração do React para usar o Reactstrap
+# Exercício - Componentes do React - Parte 1
 
-Primeiro, configurei o projeto React para usar o Reactstrap, executando os seguintes comandos no terminal para instalar as dependências necessárias:
+Neste exercício, adicionei um novo componente chamado `Menu` ao aplicativo React. O componente `Menu` exibe uma lista de pratos, onde cada prato é representado por uma imagem, nome, descrição, categoria e preço.
 
-```bash
-npm install reactstrap react react-dom
-npm install --save bootstrap
-npm install react-popper @popperjs/core
-```
+### Estrutura do Componente Menu
 
-### 2. Configuração do Bootstrap
-Em seguida, configurei o Bootstrap, adicionando a seguinte linha no arquivo src/index.js para importar o CSS do Bootstrap:
+1. **useState:** O hook `useState` é usado para armazenar os dados dos pratos no estado local.
+2. **Estrutura do Componente:** O componente `Menu` é renderizado utilizando o método `map` para iterar sobre os pratos e renderizar o layout de cada um.
+3. **Uso do Reactstrap:** Utilizamos o componente `Media` do Reactstrap para formatar a exibição dos pratos de forma organizada, exibindo imagens e texto.
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+### Como funciona
 
-### 3. Criação da Barra de Navegação
-Para adicionar a barra de navegação, segui os seguintes passos:
+1. Os dados dos pratos são armazenados no estado `dishes`.
+2. Usei `map` para gerar o layout de cada prato com a imagem, nome e descrição.
+3. A estrutura final é renderizada dentro de um container com um layout de lista.
 
-Abri o arquivo src/App.js.
-Apaguei o conteúdo entre as tags <header> e </header>.
-Adicionei o seguinte código no lugar do conteúdo apagado:
+### Estilo
 
-<Navbar dark color="primary">
-  <div className="container">
-    <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-    <div>Aluno: Fulano de Tal</div>
-  </div>
-</Navbar>
+No momento, o arquivo `App.css` foi limpo, mas o layout e estilo dos elementos são gerenciados pelo Reactstrap.
 
-### Explicação do código React com Reactstrap
+### Passos realizados
 
-#### `<Navbar>`:
-- O componente `<Navbar>` é parte do Reactstrap e representa uma barra de navegação (menu).
-- O `dark` aplica um estilo de texto claro, que normalmente é usado em barras de navegação escuras (em contraste com um fundo escuro).
-- O `color="primary"` define a cor da barra de navegação. O valor `"primary"` refere-se à cor principal do tema Bootstrap (geralmente um tom de azul).
+- **Passo 1:** Preparação das imagens:
+  - Baixei e descompactei o arquivo `images.zip` contendo as imagens dos pratos.
+  - As imagens foram movidas para a pasta `public/assets/images`.
 
-#### `<div className="container">`:
-- Dentro da barra de navegação, há uma `<div>` com a classe `container`, que é uma classe do Bootstrap que cria um contêiner responsivo. Ela centraliza e limita a largura dos elementos dentro dela, de modo que a navegação fique organizada e ajustada em diferentes tamanhos de tela.
+- **Passo 2:** Criação do componente `MenuComponent.js`:
+  - Criei o componente `Menu` que recebe os dados dos pratos e os renderiza na tela.
+  - Utilizei o hook `useState` para armazenar os dados dos pratos.
+  - Utilizei o componente `Media` do Reactstrap para formatar a exibição.
 
-#### `<NavbarBrand href="/">`:
-- O `<NavbarBrand>` é um componente do Reactstrap que representa o título ou a marca da barra de navegação.
-- O `href="/"` indica que a marcação da barra de navegação será clicável e, ao ser clicada, o usuário será redirecionado para a raiz do site (`/`), ou seja, a página inicial.
-- O texto `"Ristorante Con Fusion"` é o nome ou título da aplicação, que provavelmente representa o nome de um restaurante fictício, no contexto de um site de demonstração de um aplicativo de comida.
+- **Passo 3:** Atualização do arquivo `App.js`:
+  - Importei o componente `Menu` para o arquivo `App.js`.
+  - Adicionei o componente `Menu` dentro do JSX para exibição.
 
-#### `<div>Aluno: Fulano de Tal</div>`:
-- Este `<div>` exibe o nome do aluno, no caso `"Fulano de Tal"`. Isso pode ser usado para mostrar informações sobre quem está desenvolvendo ou sendo responsável pelo projeto, útil para demonstrações ou entregas de tarefas.
+- **Passo 4:** Limpeza do arquivo `App.css`:
+  - O arquivo `App.css` foi limpo, já que a formatação está sendo gerenciada pelo Reactstrap ou poderá ser personalizada posteriormente.
 
+- **Passo 5:** Commit no Git:
+  - Adicionei e comitamos as alterações com a mensagem "Components Part 1".
 
+### Resumo
 
-### 4. Alteração do Nome
-Por fim, alterei o nome dentro da <div> de "Aluno: Fulano de Tal" para "Aluno: Pedro Lucas". O código ficou da seguinte forma:
-
-<Navbar dark color="primary">
-  <div className="container">
-    <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-    <div>Aluno: Pedro Lucas</div>
-  </div>
-</Navbar>
-
-1. <Navbar dark color="primary">:
-<Navbar>: Esse é um componente da biblioteca Reactstrap. Ele representa uma barra de navegação (navbar), que é um elemento comum em sites para fornecer links para diferentes partes da aplicação.
-
-dark: A propriedade dark altera o estilo da navbar para ter um fundo escuro. Esse estilo é usado quando você quer que o texto e os elementos dentro da navbar sejam mais claros para melhorar a visibilidade em contraste com um fundo escuro.
-
-color="primary": Define a cor da navbar, usando a classe primary do Bootstrap. A cor "primária" geralmente é uma cor de destaque do tema (por padrão, é um tom de azul). O Bootstrap aplica essa cor ao fundo da navbar.
-
-2. <div className="container">:
-A classe container do Bootstrap é usada para centralizar e ajustar o conteúdo dentro de um espaço com largura fixa, de forma responsiva. Isso significa que a navbar não vai ocupar a largura inteira da tela, mas sim uma parte dela (com base no tamanho da tela do dispositivo). A container ajuda a garantir que o conteúdo dentro dela seja bem distribuído, com margens automáticas nas laterais.
-
-<div className="container"> é uma maneira de organizar os elementos da navbar de forma que eles fiquem bem alinhados, sem se espalharem por toda a largura da tela.
-
-3. <NavbarBrand href="/">:
-<NavbarBrand>: Esse é um componente do Reactstrap que é utilizado para mostrar o nome ou marca da aplicação na navbar. Geralmente, ele é usado para exibir o logo ou o título do site ou da aplicação.
-
-href="/": A propriedade href="/" define que o nome da marca, "Ristorante Con Fusion", será um link que, ao ser clicado, redireciona o usuário para a página inicial do site. O valor / significa que o link levará à raiz da aplicação, ou seja, à página inicial.
-
-"Ristorante Con Fusion": Este é o texto que aparece na navbar e é o nome ou marca do site ou aplicativo. Nesse caso, é um nome fictício de um restaurante, possivelmente usado como exemplo de um projeto.
-
-4. <div>Aluno: Pedro Lucas</div>:
-Este é um simples <div> contendo o texto "Aluno: Pedro Lucas". Esse texto pode ser usado para mostrar quem é o responsável pelo projeto ou quem está desenvolvendo o código.
-
-Função do texto: "Aluno: Pedro Lucas" pode ser útil em contextos como tarefas acadêmicas ou projetos de demonstração, onde é importante identificar quem criou o código. Pode ser exibido ao lado ou abaixo do nome da marca na navbar, dependendo do layout.
-
-abre o arquivo README e atualizei com um resumo dos passos que foram feitos na atividade de hoje.
-
-insire uma imagem mostrando o navbar com o seu nome como a imagem a seguir:
+- Criei um novo componente `Menu` em React para exibir uma lista de pratos.
+- Usei o hook `useState` para gerenciar os dados dos pratos.
+- Utilizei o `Media` do Reactstrap para formatar a exibição dos pratos.
+- Modifiquei o arquivo `App.js` para incluir o componente `Menu`.
+- Limpei o arquivo `App.css`.
+- Commitei as alterações no Git com a mensagem "Components Part 1".
 
 
-![imagem](img_navbar.png)
 
 
 
