@@ -7,58 +7,145 @@
 
 ## Passos Realizados
 
-# Exercício - Componentes do React - Parte 1
+# Documentação: Como implementei o exercício de componentes React - Parte 2
 
-Neste exercício, adicionei um novo componente chamado `Menu` ao aplicativo React. O componente `Menu` exibe uma lista de pratos, onde cada prato é representado por uma imagem, nome, descrição, categoria e preço.
+### Criação da pasta `shared` e do arquivo `dishes.js`
 
-### Estrutura do Componente Menu
+Primeiro, criei uma pasta chamada `shared` dentro da pasta `src`, onde centralizei os dados dos pratos. Dentro dessa pasta, criei um arquivo `dishes.js` que exporta uma constante `DISHES` contendo um array de objetos, representando cada prato disponível no menu.
 
-1. **useState:** O hook `useState` é usado para armazenar os dados dos pratos no estado local.
-2. **Estrutura do Componente:** O componente `Menu` é renderizado utilizando o método `map` para iterar sobre os pratos e renderizar o layout de cada um.
-3. **Uso do Reactstrap:** Utilizamos o componente `Media` do Reactstrap para formatar a exibição dos pratos de forma organizada, exibindo imagens e texto.
+Exemplo do conteúdo de `dishes.js`:
 
-### Como funciona
+```javascript
+export const DISHES = [
+  {
+    id: 0,
+    name: 'Uthappizza',
+    image: 'assets/images/uthappizza.png',
+    category: 'mains',
+    label: 'Hot',
+    price: '4.99',
+    description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza...',
+    comments: [ /* Lista de comentários */ ]
+  },
+  {
+    id: 1,
+    name: 'Zucchipakoda',
+    image: 'assets/images/zucchipakoda.png',
+    category: 'appetizer',
+    label: '',
+    price: '1.99',
+    description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter...',
+    comments: [ /* Lista de comentários */ ]
+  },
+  /* Mais pratos... */
+];
+```
 
-1. Os dados dos pratos são armazenados no estado `dishes`.
-2. Usei `map` para gerar o layout de cada prato com a imagem, nome e descrição.
-3. A estrutura final é renderizada dentro de um container com um layout de lista.
+Esses dados foram importados para o componente `App.js` para serem passados como props para o componente `MenuComponent`.
 
-### Estilo
+### Alteração do componente `MenuComponent.js`
 
-No momento, o arquivo `App.css` foi limpo, mas o layout e estilo dos elementos são gerenciados pelo Reactstrap.
+O componente `MenuComponent` foi refatorado para usar o `Card` do `reactstrap`, conforme solicitado. A funcionalidade de renderizar os pratos foi ajustada para utilizar esse componente, que proporciona uma interface mais limpa e interativa.
 
-### Passos realizados
+#### Estrutura do Menu
 
-- **Passo 1:** Preparação das imagens:
-  - Baixei e descompactei o arquivo `images.zip` contendo as imagens dos pratos.
-  - As imagens foram movidas para a pasta `public/assets/images`.
+O Menu renderiza uma lista de pratos em cartões (`Card`), onde cada prato é exibido com uma imagem e o nome. Ao clicar em um prato, o estado `selectedDish` é atualizado para exibir as informações detalhadas sobre o prato selecionado.
 
-- **Passo 2:** Criação do componente `MenuComponent.js`:
-  - Criei o componente `Menu` que recebe os dados dos pratos e os renderiza na tela.
-  - Utilizei o hook `useState` para armazenar os dados dos pratos.
-  - Utilizei o componente `Media` do Reactstrap para formatar a exibição.
+Exemplo de implementação do componente `MenuComponent`:
 
-- **Passo 3:** Atualização do arquivo `App.js`:
-  - Importei o componente `Menu` para o arquivo `App.js`.
-  - Adicionei o componente `Menu` dentro do JSX para exibição.
+```javascript
+import React, { useState } from 'react';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
-- **Passo 4:** Limpeza do arquivo `App.css`:
-  - O arquivo `App.css` foi limpo, já que a formatação está sendo gerenciada pelo Reactstrap ou poderá ser personalizada posteriormente.
+const Menu = (props) => {
+  const [selectedDish, setSelectedDish] = useState(null);
+  
+  const onDishSelect = (dish) => {
+    setSelectedDish(dish);
+  };
 
-- **Passo 5:** Commit no Git:
-  - Adicionei e comitamos as alterações com a mensagem "Components Part 1".
+  const renderDish = (dish) => {
+    if (dish != null) {
+      return (
+        <Card>
+          <CardImg top src={dish.image} alt={dish.name} />
+          <CardBody>
+            <CardTitle>{dish.name}</CardTitle>
+            <CardText>{dish.description}</CardText>
+          </CardBody>
+        </Card>
+      );
+    } else {
+      return <div></div>;
+    }
+  };
 
-### Resumo
+  const menu = props.dishes.map((dish) => {
+    return (
+      <div className="col-12 col-md-5 m-1" key={dish.id}>
+        <Card onClick={() => onDishSelect(dish)}>
+          <CardImg width="100%" src={dish.image} alt={dish.name} />
+          <CardImgOverlay>
+            <CardTitle>{dish.name}</CardTitle>
+          </CardImgOverlay>
+        </Card>
+      </div>
+    );
+  });
 
-- Criei um novo componente `Menu` em React para exibir uma lista de pratos.
-- Usei o hook `useState` para gerenciar os dados dos pratos.
-- Utilizei o `Media` do Reactstrap para formatar a exibição dos pratos.
-- Modifiquei o arquivo `App.js` para incluir o componente `Menu`.
-- Limpei o arquivo `App.css`.
-- Commitei as alterações no Git com a mensagem "Components Part 1".
+  return (
+    <div className="container">
+      <div className="row">{menu}</div>
+      <div className="row">
+        <div className="col-12 col-md-5 m-1">
+          {renderDish(selectedDish)}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Menu;
+```
+
+### Refatoração do componente `App.js`
+
+Em `App.js`, importei o arquivo `dishes.js` contendo a constante `DISHES` e a passei como props para o componente `Menu`. Assim, os dados dos pratos são acessíveis no componente `Menu` e podem ser exibidos como cards. A estrutura da `Navbar` foi mantida para que o título "Ristorante Con Fusion" fosse exibido na parte superior da página.
+
+Exemplo de `App.js`:
+
+```javascript
+import './App.css';
+import React, { useState } from 'react';
+import { Navbar, NavbarBrand } from 'reactstrap';
+import Menu from './components/MenuComponent';
+import { DISHES } from './shared/dishes';
+
+function App() {
+  const [dishes] = useState(DISHES);
+
+  return (
+    <div>
+      <Navbar dark color="primary" expand="md">
+        <div className="container">
+          <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+          <div>Aluno: Fulano de Tal</div>
+        </div>
+      </Navbar>
+      <Menu dishes={dishes} />
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Testes e verificação
+
+Testei a interação entre o menu e os detalhes dos pratos. Ao clicar em um prato, os detalhes correspondentes são renderizados corretamente. Verifiquei também que todos os dados dos pratos (nome, imagem, descrição) estavam sendo exibidos corretamente no componente `Card`.
 
 
+## Conclusão
 
-
-
-
+O exercício foi concluído com sucesso. O componente de menu foi refatorado para exibir os pratos de forma interativa, utilizando o componente `Card` do `reactstrap` para renderizar os pratos e também exibir detalhes sobre o prato selecionado. Além disso, centralizei os dados dos pratos em um arquivo separado (`dishes.js`), mantendo o código mais organizado.
+```
