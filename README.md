@@ -1,8 +1,8 @@
 # Documentação da aula 09- 
 
 ## Informações Gerais
-- **Data de Execução**: 25/11/2024
-- **Aluno**: Pedro Lucas
+- **Data de Execução**: 26/11/2024
+- **Aluno**: Pedro Lucas sp
 # Configuração do Projeto com Reactstrap
 
 ## Passos Realizados
